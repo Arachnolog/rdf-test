@@ -1,0 +1,179 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ex:     <http://example.org/vocabulary/>.
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#>.
+
+ex:Car a rdfs:Class.
+ex:Model a rdfs:Class.
+ex:Body a rdfs:Class.
+ex:Interior a rdfs:Class.
+ex:Suspension a rdfs:Class.
+ex:Engine a rdfs:Class.
+ex:Brand a rdfs:Class.
+ex:Wheels a rdfs:Class.
+ex:EngineType a rdfs:Class.
+ex:FuelType a rdfs:Class.
+
+
+
+ex:registrationNumber rdf:type rdf:Property;
+        rdfs:domain ex:Car;
+        rdfs:range xsd:string.
+
+
+
+ex:serialNumber rdf:type rdf:Property;
+        rdfs:domain ex:Car, ex:Engine;
+        rdfs:range xsd:string.
+
+
+ex:productionDate rdf:type rdf:Property;
+        rdfs:domain ex:Car;
+        rdfs:range xsd:date.
+
+
+ex:name rdf:type rdf:Property;
+        rdfs:domain ex:Model, ex:Brand, ex:Engine, ex:EngineType, ex:FuelType;
+        rdfs:range xsd:date.
+
+
+ex:year rdf:type rdf:Property;
+        rdfs:domain ex:Model;
+        rdfs:range xsd:year.
+
+
+ex:color rdf:type rdf:Property;
+        rdfs:domain ex:Body, ex:Interior;
+        rdfs:range xsd:string.
+
+
+ex:doorCount rdf:type rdf:Property;
+        rdfs:domain ex:Body;
+        rdfs:range xsd:integer.
+
+
+ex:seatsCount rdf:type rdf:Property;
+        rdfs:domain ex:Interior;
+        rdfs:range xsd:integer.
+		
+		
+ex:loadCapacity rdf:type rdf:Property;
+        rdfs:domain ex:Suspension;
+        rdfs:range xsd:integer.
+		
+		
+ex:count rdf:type rdf:Property;
+        rdfs:domain ex:Wheels;
+        rdfs:range xsd:integer.	
+		
+		
+ex:size rdf:type rdf:Property;
+        rdfs:domain ex:Wheels;
+        rdfs:range xsd:integer.	
+		
+		
+		
+ex:capacity rdf:type rdf:Property;
+        rdfs:domain ex:Engine;
+        rdfs:range xsd:integer.
+
+
+
+ex:Petrol a ex:FuelType;
+		ex:name "Petrol"@en.
+
+ex:Diesel a ex:FuelType;
+		ex:name "Diesel"@en.
+
+ex:Electricity  a ex:FuelType;
+		ex:name "Electricity"@en.
+
+ex:PetrolEngine a ex:EngineType;
+		ex:name "Petrol engine"@en.
+
+ex:DieselEngine a ex:EngineType;
+		ex:name "Diesel engine"@en.
+
+ex:ElectricEngine a ex:EngineType;
+		ex:name "Electric engine"@en.
+	
+ex:EngineA a ex:Engine;
+		ex:capacity "180"^^<xsd:integer>;
+		ex:name "JZ"@en;
+		ex:serialNumber "UIOAW13KJ2350KJ"^^<xsd:string>;
+		ex:EngineType ex:DieselEngine.
+	
+ex:EngineB a ex:Engine;
+		ex:capacity "523"^^<xsd:integer>;
+		ex:name "BZU"@en;
+		ex:serialNumber "JHEVS345B678BDK"^^<xsd:string>;
+		ex:EngineType ex:PetrolEngine.
+
+ex:WheelsA a ex:Wheels;
+		ex:count "4"^^<xsd:integer>;
+		ex:size "15"^^<xsd:integer>.
+	
+ex:WheelsB a ex:Wheels;
+		ex:count "6"^^<xsd:integer>;
+		ex:size "17"^^<xsd:integer>.
+
+ex:SuspensionA a ex:Suspension;
+		ex:loadCapacity "550"^^<xsd:integer>;
+		ex:Wheels ex:WheelsA.
+
+ex:SuspensionB a ex:Suspension;
+		ex:loadCapacity "1660"^^<xsd:integer>;
+		ex:Wheels ex:WheelsB.
+
+ex:InteriorA a ex:Interior;
+		ex:color "Black"@en;
+		ex:seatsCount "5"^^<xsd:integer>.
+	
+
+ex:InteriorB a ex:Interior;
+		ex:color "White"@en;
+		ex:seatsCount "7"^^<xsd:integer>.
+	
+ex:BodyA a ex:Body;
+		ex:color "Green"@en;
+		ex:doorCount "4"^^<xsd:integer>.
+	
+ex:BodyB a ex:Body;
+		ex:color "Orange"@en;
+		ex:doorCount "6"^^<xsd:integer>.
+
+ex:Toyota a ex:Brand;
+		ex:name "Toyota"@en.
+	
+ex:Volkswagen a ex:Brand;
+		ex:name "Volkswagen"@en.
+
+ex:Mark a ex:Model;
+		ex:name "Mark"@en;
+		ex:year "2001"^^<xsd:gYear>;
+		ex:Brand ex:Toyota.
+	
+ex:Transit a ex:Model;
+		ex:name "Transit"@en;
+		ex:year "2008"^^<xsd:gYear>;
+		ex:Brand ex:Volkswagen.
+	
+ex:CarA a ex:Car;
+		ex:registrationNumber "A12 1234"^^<xsd:string>;
+		ex:serialNumber "4A3AB76T68E011282"^^<xsd:string>;
+		ex:productionDate "10-10-2001"^^<xsd:date>;
+		ex:Model ex:Mark;
+		ex:Body ex:BodyA;
+		ex:Interior ex:InteriorA;
+		ex:Suspension ex:SuspensionA;
+		ex:Engine ex:EngineA.
+	
+ex:CarB a ex:Car;
+		ex:registrationNumber "K44 8365"^^<xsd:string>;
+		ex:serialNumber "1GNDT13W5R2133070"^^<xsd:string>;
+		ex:productionDate "05-02-2008"^^<xsd:date>;
+		ex:Model ex:Transit;
+		ex:Body ex:BodyB;
+		ex:Interior ex:InteriorB;
+		ex:Suspension ex:SuspensionB;
+		ex:Engine ex:EngineB.
